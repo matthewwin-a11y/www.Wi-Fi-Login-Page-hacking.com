@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NETWORK TERMINAL</title>
+<style>
+    body {
+        background: black;
+        color: #00ff00;
+        font-family: monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .terminal {
+        border: 2px solid #00ff00;
+        padding: 20px;
+        width: 500px;
+    }
+
+    input {
+        width: 100%;
+        background: black;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 10px;
+        margin-top: 10px;
+        font-family: monospace;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 15px;
+        padding: 10px;
+        background: black;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #00ff00;
+        color: black;
+    }
+
+    .output {
+        margin-top: 15px;
+        display: none;
+        white-space: pre-line;
+        border-top: 1px solid #00ff00;
+        padding-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="terminal">
+    <div>SECURE NETWORK INTERFACE</div>
+
+    <input id="ssid" type="text" placeholder="Network Name (SSID)">
+    <input id="pass" type="password" placeholder="Room / Password">
+
+    <button onclick="connect()">CONNECT</button>
+
+    <div id="output" class="output"></div>
+</div>
+
+<script>
+function connect() {
+    const ssid = document.getElementById("ssid").value || "UNKNOWN_NET";
+    const output = document.getElementById("output");
+
+    output.style.display = "block";
+    output.textContent =
+`[✓] Connecting to: ${ssid}
+[✓] Authenticating...
+[✓] Access Granted
+
+--- NETWORK INFO ---
+IP Address: 192.168.1.${Math.floor(Math.random()*200)}
+Gateway: 192.168.1.1
+Encryption: WPA2
+Signal Strength: ${Math.floor(Math.random()*40)+60}%
+Devices Online: ${Math.floor(Math.random()*10)+1}
+DNS: 8.8.8.8
+
+STATUS: HACKED MODE`;
+}
+</script>
+
+</body>
+</html>
